@@ -1,4 +1,4 @@
-📄 College AI Agent – Architecture Design
+ College AI Agent – Architecture Design
 -- Overview
 
 This document describes the architecture for an AI agent designed for a college website assistant. The agent helps students, parents, and staff by handling:
@@ -41,7 +41,7 @@ User (Web Chat / Mobile App)
 
        
         -- Internal Components
---- 1. Query Understanding (Intent Detection)
+ 1. Query Understanding (Intent Detection)
 
 The AI agent uses an LLM to classify queries into categories:
 
@@ -60,7 +60,7 @@ The LLM also extracts entities like:
 Course name
 Department
 Date
---- 2. Reasoning Engine (Core AI Behavior ⭐)
+ 2. Reasoning Engine (Core AI Behavior ⭐)
 
 This is the most important component.
 
@@ -78,7 +78,7 @@ Example:
 “B.Tech fees” → Direct retrieval
 
 
---- 3. Router (Decision Point)
+ 3. Router (Decision Point)
 
 Based on intent, the agent selects tools:
 
@@ -88,10 +88,7 @@ Fees	        finance_tool
 Courses	       academic_tool
 Policies	   policy_tool
 Dates	       calendar_tool
-
-
-
---- 4. Tools (Data Access Layer)
+4. Tools (Data Access Layer)
 
 Each tool is a Python function:
 
@@ -102,7 +99,7 @@ policy_tool → extracts info from PDFs
 calendar_tool → deadlines, events
 
 
---- 5. Knowledge Retrieval
+ 5. Knowledge Retrieval
 
 Two types:
 
@@ -114,7 +111,7 @@ Uses embeddings to search documents
 
 
 
--- 6. Clarification Handler
+ 6. Clarification Handler
 
 If query is incomplete:
 
@@ -124,7 +121,7 @@ User: “Tell me fees”
 → Agent: “Which course are you asking about?”
 
 
---- 7. Validation Layer
+ 7. Validation Layer
 
 Ensures:
 
@@ -134,7 +131,7 @@ No hallucinated information
 
 
 
---- 8. Response Generator
+ 8. Response Generator
 
 Converts raw data into natural language:
 
@@ -145,12 +142,12 @@ Example:
 →
 “B.Tech fee is ₹1,20,000 per year.”
 
--- End-to-End Flow Example
+ End-to-End Flow Example
 Query:
 
 “Tell me B.Tech admission eligibility
 
--- End-to-End Flow Example
+ End-to-End Flow Example
 Query:
 
 “Tell me B.Tech admission eligibility”
@@ -270,16 +267,16 @@ Step 6 – Response
 
 
           -- Key Design Decisions
-✅ Single LLM Approach
+ Single LLM Approach
 One model handles classification + reasoning
 Reduces complexity
-✅ Dynamic Routing
+ Dynamic Routing
 Queries routed based on intent
-✅ Hybrid Retrieval
+ Hybrid Retrieval
 Structured + unstructured data
-✅ Clarification First
+ Clarification First
 Avoids wrong answers
-✅ Validation Layer
+ Validation Layer
 Prevents hallucination
 
 
